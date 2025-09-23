@@ -15,3 +15,7 @@ def login(request: HttpRequest):
         return render(request, "account/login.html", context)
     else:
         return render(request, "account/login.html")
+
+
+def signup(request: HttpRequest):
+    return render(request, "account/signup.html")
