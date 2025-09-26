@@ -25,10 +25,10 @@ STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-3hiru_$k^5=8s&!jq%ms&y&!d)ugjw!+1h)#)-e@0_=un2+^qb"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get("DEBUG") else False
 
 ALLOWED_HOSTS = []
 

@@ -11,3 +11,4 @@ node_modules/
 .venv
 static/CACHE/
 .vscode/
+db.sqlite3
