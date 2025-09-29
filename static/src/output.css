@@ -191,6 +191,8 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-primary-50: #eff6ff;
+    --color-primary-100: #dbeafe;
     --color-primary-300: #93c5fd;
     --color-primary-600: #2563eb;
     --color-primary-700: #1d4ed8;
@@ -1476,9 +1478,6 @@
   .max-h-full {
     max-height: 100%;
   }
-  .min-h-\[140px\] {
-    min-height: 140px;
-  }
   .min-h-\[180px\] {
     min-height: 180px;
   }
@@ -2076,8 +2075,17 @@
   .bg-green-700 {
     background-color: var(--color-green-700);
   }
+  .bg-green-900 {
+    background-color: var(--color-green-900);
+  }
+  .bg-primary-100 {
+    background-color: var(--color-primary-100);
+  }
   .bg-primary-800 {
     background-color: var(--color-primary-800);
+  }
+  .bg-red-900 {
+    background-color: var(--color-red-900);
   }
   .bg-transparent {
     background-color: transparent;
@@ -2404,6 +2412,12 @@
   .text-gray-900 {
     color: var(--color-gray-900);
   }
+  .text-green-500 {
+    color: var(--color-green-500);
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
+  }
   .text-white {
     color: var(--color-white);
   }
@@ -2596,19 +2610,9 @@
       width: auto;
     }
   }
-  .sm\:grid-cols-1 {
-    @media (width >= 40rem) {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-  }
   .sm\:grid-cols-2 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  .sm\:grid-cols-4 {
-    @media (width >= 40rem) {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
   .sm\:px-4 {
