@@ -1,0 +1,85 @@
+{% extends "_base.html" %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Create Chat Room</h1>
+
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+
+            <!-- Room Name -->
+            <div>
+                <label for="{{ room_form.name.id_for_label }}" 
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Room Name
+                </label>
+                <input type="text" 
+                    name="{{ room_form.name.name }}" 
+                    id="{{ room_form.name.id_for_label }}"
+                    class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+                    placeholder="Enter room name (e.g., General Discussion)"
+                    value="{{ room_form.name.value|default:'' }}"
+                    required />
+                {% if room_form.name.errors %}
+                    <div class="mt-1 text-sm text-red-600 dark:text-red-400">
+                        {{ room_form.name.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Room Description -->
+            <div>
+                <label for="{{ room_form.description.id_for_label }}" 
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Description
+                </label>
+                <textarea 
+                    name="{{ room_form.description.name }}" 
+                    id="{{ room_form.description.id_for_label }}"
+                    rows="4"
+                    class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+                    placeholder="Describe what this room is for...">{{ room_form.description.value|default:'' }}</textarea>
+                {% if room_form.description.errors %}
+                    <div class="mt-1 text-sm text-red-600 dark:text-red-400">
+                        {{ room_form.description.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Privacy Setting -->
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input 
+                        type="checkbox" 
+                        name="{{ room_form.is_private.name }}" 
+                        id="{{ room_form.is_private.id_for_label }}"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        {% if room_form.is_private.value %}checked{% endif %} />
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="{{ room_form.is_private.id_for_label }}" 
+                        class="font-medium text-gray-900 dark:text-gray-300">
+                        Private Room
+                    </label>
+                    <p class="text-gray-500 dark:text-gray-400">
+                        Only invited members can join this room
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-5 pt-4">
+                <button type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Create Room
+                </button>
+                <a href="#" 
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-6 py-3 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

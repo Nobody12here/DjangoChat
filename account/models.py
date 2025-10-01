@@ -13,7 +13,7 @@ class CustomUserManager(BaseUserManager):
 
     def create_superuser(self, email, password=None, **kwargs):
         kwargs.setdefault("is_staff", True)
-        kwargs.setdefault("is_superuser", True)
+        kwargs.setdefault("is_admin", True)
         return self.create_user(email, password, **kwargs)
 
 
@@ -23,8 +23,25 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=50, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    @property
+    def is_superuser(self):
+        return self.is_admin
 
+    @property
+    def is_staff(self):
+       return self.is_admin
+
+    def has_perm(self, perm, obj=None):
+       return self.is_admin
+
+    def has_module_perms(self, app_label):
+       return self.is_admin
+
+    @is_staff.setter
+    def is_staff(self, value):
+        self._is_staff = value
     objects=CustomUserManager()
     USERNAME_FIELD = "email"
 

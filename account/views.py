@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from .models import Profile
 from .forms import ProfileForm, CustomUserForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login as auth_login
 
 
 def login(request: HttpRequest):
@@ -11,10 +11,12 @@ def login(request: HttpRequest):
         password = request.POST.get("password")
         user = authenticate(email=email, password=password)
         message = "Logged in sucessfully"
+        if user:
+            auth_login(request,user)
+            context = {"message": message}
+            return redirect("create-room")
         if not user:
             message = "Invalid credentials"
-        context = {"message": message}
-        return render(request, "account/login.html", context)
     else:
         return render(request, "account/login.html")
 
