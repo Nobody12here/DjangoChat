@@ -15,7 +15,9 @@ class Room(models.Model):
         related_name="admin_rooms",
     )  # room owner
     is_private = models.BooleanField(default=False)
-    members = models.ManyToManyField(User, blank=True,null=True, related_name="chat_rooms")
+    members = models.ManyToManyField(
+        User, blank=True, null=True, related_name="chat_rooms"
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -55,4 +57,4 @@ class Message(models.Model):
 
     def __str__(self):
         """Unicode representation of Message."""
-        self.sender.last_name
+        self.sender.first_name

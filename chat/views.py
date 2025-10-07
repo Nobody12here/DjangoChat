@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Message, Room
+from .models import Room
 from .forms import ChatRoomForm
 
 
