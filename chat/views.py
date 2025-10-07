@@ -13,6 +13,7 @@ def create_room(request: HttpRequest):
             chat_room: Room = room_form.save(commit=False)
             chat_room.admin = request.user
             chat_room.save()
+            chat_room.members.add(request.user)
             return redirect("list-rooms")
     else:
         room_form = ChatRoomForm()
