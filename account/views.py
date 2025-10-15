@@ -15,7 +15,7 @@ def login(request: HttpRequest):
         if user:
             auth_login(request, user)
             return redirect("create-room")
-        if not user:
+        else:
             context["message"] = "Login failed please try again!"
             return render(request, "account/login.html", context)
     else:
