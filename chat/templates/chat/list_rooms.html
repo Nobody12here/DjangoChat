@@ -1,14 +1,27 @@
 {% extends "_base.html" %} {% block content %}
-<div class="flex justify-between items-center mb-6">
-    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">
-        My Chat Rooms
-    </h1>
-    <a
-        href="{% url 'create-room' %}"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    >
-        Create New Room
-    </a>
+<div class="max-w-4xl mx-auto mb-6">
+    <div class="flex items-center justify-between bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-5 py-4 shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-lg bg-blue-600 text-white flex items-center justify-center">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M18 13a3 3 0 01-3 3H8l-4 3v-3H5a3 3 0 01-3-3V6a3 3 0 013-3h10a3 3 0 013 3v7z"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-semibold text-gray-900 dark:text-white">My Chat Rooms</h1>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Create and manage your rooms</p>
+            </div>
+        </div>
+        <a
+            href="{% url 'create-room' %}"
+            class="inline-flex items-center gap-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-4 py-2.5 shadow-sm dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
+            </svg>
+            Create Room
+        </a>
+    </div>
 </div>
 
 <div class="max-w-4xl mx-auto">
@@ -138,18 +151,10 @@
             <div class="mt-6">
                 <a
                     href="{% url 'create-room' %}"
-                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                    <svg
-                        class="w-4 h-4 mr-2"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                            clip-rule="evenodd"
-                        ></path>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
                     </svg>
                     Create Your First Room
                 </a>

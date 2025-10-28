@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from .models import Profile
 from .forms import ProfileForm, CustomUserForm
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib import messages
 
 
 def login(request: HttpRequest):
@@ -14,12 +15,19 @@ def login(request: HttpRequest):
         context = {"message": message}
         if user:
             auth_login(request, user)
-            return redirect("create-room")
+            return redirect("list-rooms")
         else:
             context["message"] = "Login failed please try again!"
             return render(request, "account/login.html", context)
     else:
         return render(request, "account/login.html")
+
+
+def logout(request: HttpRequest):
+    if request.method == "POST":
+        auth_logout(request)
+        messages.success(request, "You have logged out sucessfully !")
+        return redirect("login")
 
 
 def signup(request: HttpRequest):

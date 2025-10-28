@@ -56,7 +56,7 @@ def list_rooms(request: HttpRequest):
 def room(request: HttpRequest, room_id: int):
     try:
         room = Room.objects.get(id=room_id)
-        print (room.description)
+        
     except Room.DoesNotExist:
         print(f"this room id does not exists {room_id}")
 
