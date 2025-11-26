@@ -13,3 +13,6 @@ static/CACHE/
 .vscode/
 db.sqlite3
 tes.sql
+staticfiles/
+
+

@@ -57,4 +57,4 @@ class Message(models.Model):
 
     def __str__(self):
         """Unicode representation of Message."""
-        self.sender.first_name
+        return self.sender.email
